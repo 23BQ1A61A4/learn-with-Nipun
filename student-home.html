@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Learn with Nipun</title>
+    <link rel="stylesheet" href="https://sasankpandrakula.github.io/learn-with-Nipun/style.css">
+    <style>
+        body {
+        /* Using the background image as requested */
+        background-image: url('https://sasankpandrakula.github.io/learn-with-Nipun/background_image.png');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        color: #333;
+        min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            <div class="logo-container">
+                <img src="https://sasankpandrakula.github.io/learn-with-Nipun/Logo.png" alt="Learn with Nipun Logo" class="logo-img">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            
+            <div class="profile-section">
+                <span>Name</span>
+                
+                <img id="profile-display" src="default-avatar.png" class="profile-pic" onclick="triggerUpload()" alt="Profile">
+                
+                <input type="file" id="profile-upload" accept="image/*" onchange="previewImage(event)">
+            </div>
+        </div>
+
+        <nav>
+            <a href="https://sasankpandrakula.github.io/learn-with-Nipun/student-home.html" class="active">Home</a>
+            <a href="https://sasankpandrakula.github.io/learn-with-Nipun/student-courses.html">Courses</a>
+            <a href="https://sasankpandrakula.github.io/learn-with-Nipun/student-mycourses.html">MyCourses</a>
+            <a href="#">Assignments</a>
+            <a href="#">Schedules</a>
+            <a href="#">Notes</a>
+        </nav>
+    </header>
+
+    <div class="container home-layout">
+        <div class="main-content">
+            <h1>Welcome to Your Learning Journey</h1>
+            <p>Select a course to begin.</p>
+        </div>
+
+       <div class="streak-container">
+    <h3>Daily Streak</h3>
+    
+    <div class="streak-badge-circle">
+        <span id="streak-days">0</span>
+        <small>Days</small>
+    </div>
+
+    <div class="timer-display">
+        <span id="timer-text">30:00</span>
+    </div>
+    
+    <p id="streak-message" class="streak-msg"></p>
+</div>
+    </div>
+
+    <script>
+        // Streak Goal Script
+        function updateGoal() {
+            const val = document.getElementById('min-time').value;
+            document.getElementById('goal-display').innerText = val;
+            alert("Goal updated to " + val + " minutes!");
+        }
+
+        // --- NEW PROFILE PICTURE SCRIPT ---
+
+        // 1. Trigger the hidden file input when the image is clicked
+        function triggerUpload() {
+            document.getElementById('profile-upload').click();
+        }
+
+        // 2. Read the file and show the preview
+        function previewImage(event) {
+            const reader = new FileReader();
+            const file = event.target.files[0];
+
+            if (file) {
+                reader.onload = function() {
+                    const output = document.getElementById('profile-display');
+                    output.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // --- CONFIGURATION ---
+        const GOAL_MINUTES = 30; 
+        const GOAL_SECONDS = GOAL_MINUTES * 60; // 30 mins in seconds
+
+        // --- DOM ELEMENTS ---
+        const timerText = document.getElementById('timer-text');
+        const streakDisplay = document.getElementById('streak-days');
+        const msgDisplay = document.getElementById('streak-message');
+
+        // --- LOAD DATA FROM STORAGE ---
+        let currentStreak = parseInt(localStorage.getItem('userStreak')) || 0;
+        let lastCompletionDate = localStorage.getItem('lastCompletionDate');
+        let savedDate = localStorage.getItem('savedDate');
+        let timeLeft = parseInt(localStorage.getItem('timeLeft'));
+
+        const today = new Date().toDateString(); // e.g., "Tue Jan 06 2026"
+
+        // Update visual streak immediately
+        streakDisplay.innerText = currentStreak;
+
+        // --- LOGIC CHECKS ---
+
+        // 1. Check if we already finished the streak for TODAY
+        if (lastCompletionDate === today) {
+            displayCompleted();
+            return; // Stop here, don't start timer
+        }
+
+        // 2. Check if it's a NEW DAY compared to when we last saved the timer
+        // If the user visited yesterday (savedDate) and comes back today, reset timer.
+        if (savedDate !== today) {
+            timeLeft = GOAL_SECONDS; // Reset to 30 mins
+            localStorage.setItem('savedDate', today); // Mark today as the active day
+        } else {
+            // It is the same day, ensure timeLeft exists, otherwise default to full time
+            if (!timeLeft && timeLeft !== 0) timeLeft = GOAL_SECONDS;
+        }
+
+        // --- TIMER FUNCTION ---
+        function startTimer() {
+            // Update UI immediately
+            updateTimerUI();
+
+            const interval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerUI();
+                    
+                    // Save progress to storage every second
+                    localStorage.setItem('timeLeft', timeLeft);
+                } else {
+                    // TIME IS UP!
+                    clearInterval(interval);
+                    completeStreak();
+                }
+            }, 1000); // Run every 1 second
+        }
+
+        function updateTimerUI() {
+            const m = Math.floor(timeLeft / 60);
+            const s = timeLeft % 60;
+            // Format as MM:SS (e.g., 05:09)
+            timerText.innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function completeStreak() {
+            // Increment Streak
+            currentStreak++;
+            streakDisplay.innerText = currentStreak;
+            
+            // Save Data
+            localStorage.setItem('userStreak', currentStreak);
+            localStorage.setItem('lastCompletionDate', today);
+            
+            // Update Visuals
+            displayCompleted();
+            
+            alert("Congratulations! Daily streak increased!");
+        }
+
+        function displayCompleted() {
+            timerText.innerText = "Done!";
+            timerText.style.backgroundColor = "#d4edda"; // Light Green
+            timerText.style.color = "#155724";
+            msgDisplay.innerText = "Come back tomorrow!";
+        }
+
+        // Start the process
+        startTimer();
+    });
+</script>
+
+</body>
+
+</html>
+

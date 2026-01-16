@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Learn with Nipun</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background-image: url('background_image.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="Logo.png" alt="Learn with Nipun Logo" class="logo-img">
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+
+        <div class="profile-section">
+            <span>Name</span>
+            <div class="profile-pic">Profile Pic</div>
+        </div>
+    </div>
+
+    <nav>
+        <a href="student-home.html">Home</a>
+        <a href="student-courses.html">Courses</a>
+        <a href="student-mycourses.html">MyCourses</a>
+        <a href="#">Assignments</a>
+        <a href="#">Schedules</a>
+        <a href="#">Notes</a>
+    </nav>
+</header>
+
+<!-- ================= COURSES ================= -->
+<div class="container">
+    <h2>Available Courses</h2>
+
+    <!-- 🔥 API COURSES WILL LOAD HERE -->
+    <div id="courses-container"></div>
+</div>
+
+<!-- ================= SUBSCRIBE LOGIC ================= -->
+<script>
+function subscribeCourse(id, name) {
+    if (confirm("Are you sure you want to subscribe to " + name + "?")) {
+
+        let myCourses = JSON.parse(localStorage.getItem("myCourses")) || [];
+
+        if (!myCourses.some(course => course.id === id)) {
+            myCourses.push({ id, name, progress: 0 });
+            localStorage.setItem("myCourses", JSON.stringify(myCourses));
+            localStorage.setItem("justSubscribed", id);
+            window.location.href = "student-mycourses.html";
+        } else {
+            alert("You already subscribed to this course!");
+            window.location.href = "student-mycourses.html";
+        }
+    }
+}
+</script>
+
+<!-- ================= API FETCH SCRIPT ================= -->
+<script src="courses-api.js"></script>
+
+</body>
+</html>
