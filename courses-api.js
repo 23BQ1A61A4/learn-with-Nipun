@@ -1,34 +1,28 @@
 const container = document.getElementById("courses-container");
 
-function showCourse(title, platform, link) {
+function showCourse(course) {
   const div = document.createElement("div");
   div.className = "course-card";
 
-  const id = title.replace(/\s+/g, "_").toLowerCase();
-
   div.innerHTML = `
     <div class="course-header">
-      <h3 class="course-title">${title}</h3>
+      <h3 class="course-title">${course.title}</h3>
       <button class="subscribe-btn"
-        onclick="subscribeCourse('${id}', '${title}')">
+        onclick="subscribeCourse('${course.id}', '${course.title}')">
         Subscribe
       </button>
     </div>
-    <p>${platform}</p>
-    <a href="${link}" target="_blank">View Course</a>
+    <p>${course.platform} • ${course.category}</p>
+    <a href="${course.link}" target="_blank">View Course</a>
   `;
 
   container.appendChild(div);
 }
 
-/* ✅ REAL API (100% WORKING IN VS CODE + LIVE SERVER) */
-fetch("https://api.npoint.io/93bed93a99df4c91044e")
-  .then(response => response.json())
+// 🔥 FETCH FROM YOUR AGGREGATOR API
+fetch("https://api.npoint.io/dd728a5e8d0f1d2fed6e")
+  .then(res => res.json())
   .then(data => {
-    data.forEach(course => {
-      showCourse(course.title, course.platform, course.link);
-    });
+    data.forEach(course => showCourse(course));
   })
-  .catch(error => {
-    console.error("API Error:", error);
-  });
+  .catch(err => console.error("API Error:", err));
