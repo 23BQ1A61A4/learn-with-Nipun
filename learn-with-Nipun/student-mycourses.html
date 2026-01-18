@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses - Learn with Nipun</title>
+    <link rel="stylesheet" href="https://sasankpandrakula.github.io/learn-with-Nipun/style.css">
+    <style>
+        body {
+        /* Using the background image as requested */
+        background-image: url('https://sasankpandrakula.github.io/learn-with-Nipun/background_image.png');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        color: #333;
+        min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            <div class="logo-container">
+                <img src="Logo.png" alt="Learn with Nipun Logo" class="logo-img">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="profile-section">
+                <span>Name</span>
+                <div class="profile-pic">Profile Pic</div>
+            </div>
+        </div>
+        <nav>
+            <a href="student-home.html">Home</a>
+            <a href="student-courses.html">Courses</a>
+            <a href="student-mycourses.html" class="active">MyCourses</a>
+            <a href="#">Assignments</a>
+            <a href="#">Schedules</a>
+            <a href="#">Notes</a>
+        </nav>
+    </header>
+
+    <div class="container" id="courses-container">
+        <h2>My Subscriptions</h2>
+        </div>
+
+    <script>
+        window.onload = function() {
+            const container = document.getElementById('courses-container');
+            
+            // Retrieve courses from storage
+            let myCourses = JSON.parse(localStorage.getItem('myCourses')) || [];
+            let newCourseId = localStorage.getItem('justSubscribed');
+
+            if (myCourses.length === 0) {
+                container.innerHTML += "<p>You haven't subscribed to any courses yet.</p>";
+            } else {
+                myCourses.forEach(course => {
+                    // Create Card HTML
+                    let card = document.createElement('div');
+                    card.className = 'course-card my-course-card';
+                    card.id = course.id; // Set ID for scrolling
+                    
+                    // Random progress for demo purposes
+                    let randomProgress = Math.floor(Math.random() * 100);
+
+                    card.innerHTML = `
+                        <div class="course-header">
+                            <h3 class="course-title">${course.name}</h3>
+                            <button class="go-btn">Go to Course</button>
+                        </div>
+                        <p>Continue where you left off...</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: ${randomProgress}%"></div>
+                        </div>
+                        <small>${randomProgress}% Completed</small>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+            }
+
+            // Logic to scroll to the newly subscribed course
+            if (newCourseId) {
+                const targetElement = document.getElementById(newCourseId);
+                if (targetElement) {
+                    // Add highlight class for visual effect
+                    targetElement.classList.add('highlight-course');
+                    // Scroll into view
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                // Clear the flag so it doesn't scroll every time we refresh
+                localStorage.removeItem('justSubscribed');
+            }
+        };
+    </script>
+
+</body>
+
+</html>

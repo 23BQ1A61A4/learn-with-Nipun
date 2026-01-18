@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Login</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>Student Login</h2>
+
+  <button class="btn" onclick="googleLogin()">Sign in with Google</button>
+
+  <p>Not yet registered?
+    <a href="student-signup.html">Sign up</a>
+  </p>
+</div>
+
+<script>
+  const supabaseUrl = "https://gnkxhxkfzoicuyqkmgbh.supabase.co";
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdua3hoeGtmem9pY3V5cWttZ2JoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg0Nzg5MDEsImV4cCI6MjA4NDA1NDkwMX0.vWRK0PGHU_zo8ABeMC2mwPylxk9CQvFuOxD5y4BkVBI";
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+  async function googleLogin() {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "https://sasankpandrakula.github.io/learn-with-Nipun/student-home.html"
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
