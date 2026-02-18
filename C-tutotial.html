@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Learn With Nipun - C Full Course</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial;
+      background:#f1f1f1;
+    }
+
+    .sidebar{
+      width:260px;
+      height:100vh;
+      position:fixed;
+      background:#111;
+      color:white;
+      overflow-y:auto;
+    }
+
+    .sidebar h2{
+      text-align:center;
+      padding:15px;
+      background:#04AA6D;
+      margin:0;
+      font-size:20px;
+    }
+
+    .sidebar a{
+      display:block;
+      color:white;
+      padding:10px 15px;
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    .sidebar a:hover{
+      background:#04AA6D;
+    }
+
+    .main{
+      margin-left:270px;
+      padding:30px;
+    }
+
+    .section{
+      background:white;
+      padding:25px;
+      margin-bottom:25px;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    h1,h2{
+      color:#04AA6D;
+    }
+
+    pre{
+      background:#eee;
+      padding:15px;
+      overflow:auto;
+      border-radius:6px;
+    }
+
+    button{
+      background:#04AA6D;
+      color:white;
+      border:none;
+      padding:8px 15px;
+      cursor:pointer;
+      margin-top:10px;
+      border-radius:5px;
+      font-weight:bold;
+    }
+
+    button:hover{
+      background:#037a4f;
+    }
+
+    #editorModal{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.8);
+      z-index:9999;
+    }
+
+    .editorContainer{
+      background:white;
+      width:92%;
+      height:90%;
+      margin:25px auto;
+      display:flex;
+      flex-direction:column;
+      border-radius:10px;
+      overflow:hidden;
+    }
+
+    .editorTop{
+      background:#04AA6D;
+      color:white;
+      padding:10px;
+      text-align:center;
+      font-size:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .editorTop div{
+      display:flex;
+      gap:10px;
+    }
+
+    .editorBody{
+      flex:1;
+      display:flex;
+    }
+
+    textarea{
+      width:50%;
+      border:none;
+      padding:15px;
+      font-family:monospace;
+      font-size:14px;
+      outline:none;
+      resize:none;
+    }
+
+    iframe{
+      width:50%;
+      border:none;
+      background:white;
+    }
+
+    @media(max-width:900px){
+      .sidebar{
+        width:100%;
+        height:auto;
+        position:relative;
+      }
+      .main{
+        margin-left:0;
+      }
+      .editorBody{
+        flex-direction:column;
+      }
+      textarea, iframe{
+        width:100%;
+        height:50%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <h2>C Tutorial</h2>
+
+  <a href="#home">C HOME</a>
+  <a href="#intro">C Intro</a>
+  <a href="#getstarted">C Get Started</a>
+  <a href="#syntax">C Syntax</a>
+  <a href="#output">C Output</a>
+  <a href="#comments">C Comments</a>
+  <a href="#variables">C Variables</a>
+  <a href="#datatypes">C Data Types</a>
+  <a href="#operators">C Operators</a>
+  <a href="#ifelse">C If...Else</a>
+  <a href="#switch">C Switch</a>
+  <a href="#while">C While Loop</a>
+  <a href="#for">C For Loop</a>
+  <a href="#breakcontinue">C Break/Continue</a>
+  <a href="#arrays">C Arrays</a>
+  <a href="#strings">C Strings</a>
+  <a href="#userinput">C User Input</a>
+  <a href="#pointers">C Pointers</a>
+  <a href="#functions">C Functions</a>
+  <a href="#recursion">C Recursion</a>
+  <a href="#structures">C Structures</a>
+  <a href="#files">C Files</a>
+</div>
+
+<div class="main">
+
+  <!-- HOME -->
+  <div class="section" id="home">
+    <h1>C Programming Tutorial</h1>
+    <p>
+      C is one of the most popular and powerful programming languages.
+      It is used to build operating systems, embedded systems, compilers,
+      and high-performance applications.
+    </p>
+
+    <p>
+      In this tutorial, you will learn C step-by-step with examples and
+      a "Try Yourself" editor.
+    </p>
+
+    <h2>Example</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello C!");
+    return 0;
+}
+    </pre>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    printf(&quot;Hello C!&quot;);
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- INTRO -->
+  <div class="section" id="intro">
+    <h1>C Intro</h1>
+    <p>
+      C is a general-purpose programming language created by Dennis Ritchie.
+      It is fast, portable, and widely used in system programming.
+    </p>
+
+    <h2>Why Learn C?</h2>
+    <ul>
+      <li>Foundation for C++, Java, Python concepts</li>
+      <li>Used in Operating Systems</li>
+      <li>Very fast execution</li>
+      <li>Memory management support</li>
+    </ul>
+  </div>
+
+
+  <!-- GET STARTED -->
+  <div class="section" id="getstarted">
+    <h1>C Get Started</h1>
+    <p>
+      To start C programming, you need:
+    </p>
+    <ul>
+      <li>A compiler (GCC, Turbo C, CodeBlocks, etc.)</li>
+      <li>A text editor (VS Code, Notepad++, etc.)</li>
+    </ul>
+
+    <h2>Example</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Welcome to C Programming");
+    return 0;
+}
+    </pre>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    printf(&quot;Welcome to C Programming&quot;);
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- SYNTAX -->
+  <div class="section" id="syntax">
+    <h1>C Syntax</h1>
+    <p>
+      C program has:
+    </p>
+    <ul>
+      <li>Header files</li>
+      <li>Main function</li>
+      <li>Statements</li>
+      <li>Return statement</li>
+    </ul>
+
+    <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    // code
+    return 0;
+}
+    </pre>
+  </div>
+
+
+  <!-- OUTPUT -->
+  <div class="section" id="output">
+    <h1>C Output</h1>
+    <p>
+      In C, output is printed using <b>printf()</b>.
+    </p>
+
+    <pre>
+printf("Hello World");
+    </pre>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    printf(&quot;Hello World&quot;);
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- COMMENTS -->
+  <div class="section" id="comments">
+    <h1>C Comments</h1>
+    <p>
+      Comments are used to explain code.
+    </p>
+
+    <pre>
+// single line comment
+
+/*
+ multi-line
+ comment
+*/
+    </pre>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    // This is a single line comment
+    printf(&quot;Hello&quot;);
+
+    /* This is a multi-line
+       comment */
+    printf(&quot; C&quot;);
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- VARIABLES -->
+  <div class="section" id="variables">
+    <h1>C Variables</h1>
+    <p>
+      Variables store data values.
+    </p>
+
+    <pre>
+int age = 20;
+float price = 99.5;
+char grade = 'A';
+    </pre>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int age = 20;
+    float price = 99.5;
+    char grade = &#39;A&#39;;
+
+    printf(&quot;Age: %d\\n&quot;, age);
+    printf(&quot;Price: %.2f\\n&quot;, price);
+    printf(&quot;Grade: %c\\n&quot;, grade);
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- DATA TYPES -->
+  <div class="section" id="datatypes">
+    <h1>C Data Types</h1>
+    <p>
+      Common data types:
+    </p>
+
+    <ul>
+      <li><b>int</b> - stores whole numbers</li>
+      <li><b>float</b> - stores decimal numbers</li>
+      <li><b>char</b> - stores a single character</li>
+      <li><b>double</b> - stores large decimals</li>
+    </ul>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int a = 10;
+    float b = 5.5;
+    char c = &#39;X&#39;;
+
+    printf(&quot;int: %d\\n&quot;, a);
+    printf(&quot;float: %.1f\\n&quot;, b);
+    printf(&quot;char: %c\\n&quot;, c);
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- OPERATORS -->
+  <div class="section" id="operators">
+    <h1>C Operators</h1>
+    <p>
+      Operators perform operations on variables.
+    </p>
+
+    <pre>
++  -  *  /  %
+    </pre>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int a = 10, b = 3;
+
+    printf(&quot;a+b = %d\\n&quot;, a+b);
+    printf(&quot;a-b = %d\\n&quot;, a-b);
+    printf(&quot;a*b = %d\\n&quot;, a*b);
+    printf(&quot;a/b = %d\\n&quot;, a/b);
+    printf(&quot;a%%b = %d\\n&quot;, a%b);
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- IF ELSE -->
+  <div class="section" id="ifelse">
+    <h1>C If...Else</h1>
+    <p>
+      If else is used for decision making.
+    </p>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int age = 16;
+
+    if(age >= 18) {
+        printf(&quot;Adult&quot;);
+    } else {
+        printf(&quot;Minor&quot;);
+    }
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- SWITCH -->
+  <div class="section" id="switch">
+    <h1>C Switch</h1>
+    <p>
+      Switch is used instead of multiple if else.
+    </p>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int day = 3;
+
+    switch(day) {
+        case 1: printf(&quot;Monday&quot;); break;
+        case 2: printf(&quot;Tuesday&quot;); break;
+        case 3: printf(&quot;Wednesday&quot;); break;
+        default: printf(&quot;Invalid&quot;);
+    }
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- WHILE LOOP -->
+  <div class="section" id="while">
+    <h1>C While Loop</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int i = 1;
+
+    while(i <= 5) {
+        printf(&quot;%d\\n&quot;, i);
+        i++;
+    }
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- FOR LOOP -->
+  <div class="section" id="for">
+    <h1>C For Loop</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int i;
+
+    for(i=1; i<=5; i++) {
+        printf(&quot;%d\\n&quot;, i);
+    }
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- BREAK CONTINUE -->
+  <div class="section" id="breakcontinue">
+    <h1>C Break / Continue</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int i;
+
+    for(i=1; i<=5; i++) {
+        if(i == 3) continue;
+        printf(&quot;%d\\n&quot;, i);
+    }
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- ARRAYS -->
+  <div class="section" id="arrays">
+    <h1>C Arrays</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int nums[5] = {10,20,30,40,50};
+
+    printf(&quot;First: %d\\n&quot;, nums[0]);
+    printf(&quot;Last: %d\\n&quot;, nums[4]);
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- STRINGS -->
+  <div class="section" id="strings">
+    <h1>C Strings</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char name[] = &quot;Nipun&quot;;
+
+    printf(&quot;Name: %s\\n&quot;, name);
+    printf(&quot;Length: %lu\\n&quot;, strlen(name));
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- USER INPUT -->
+  <div class="section" id="userinput">
+    <h1>C User Input</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int age;
+
+    printf(&quot;Enter your age: &quot;);
+    scanf(&quot;%d&quot;, &age);
+
+    printf(&quot;Your age is: %d&quot;, age);
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- POINTERS -->
+  <div class="section" id="pointers">
+    <h1>C Pointers</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int a = 10;
+    int *p = &a;
+
+    printf(&quot;Value: %d\\n&quot;, a);
+    printf(&quot;Address: %p\\n&quot;, p);
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- FUNCTIONS -->
+  <div class="section" id="functions">
+    <h1>C Functions</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int sum = add(10, 20);
+    printf(&quot;Sum: %d&quot;, sum);
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- RECURSION -->
+  <div class="section" id="recursion">
+    <h1>C Recursion</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int factorial(int n) {
+    if(n == 1) return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    printf(&quot;Factorial of 5: %d&quot;, factorial(5));
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- STRUCTURES -->
+  <div class="section" id="structures">
+    <h1>C Structures</h1>
+
+    <button onclick="openEditor(`#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    int id;
+    char name[30];
+};
+
+int main() {
+    struct Student s1;
+    s1.id = 101;
+    strcpy(s1.name, &quot;Iswarya&quot;);
+
+    printf(&quot;ID: %d\\n&quot;, s1.id);
+    printf(&quot;Name: %s\\n&quot;, s1.name);
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+
+  <!-- FILES -->
+  <div class="section" id="files">
+    <h1>C Files</h1>
+
+    <p>
+      C supports file handling using <b>FILE*</b>, <b>fopen()</b>, <b>fprintf()</b>, <b>fscanf()</b>.
+    </p>
+
+    <button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    FILE *f = fopen(&quot;data.txt&quot;, &quot;w&quot;);
+
+    if(f == NULL) {
+        printf(&quot;File not created&quot;);
+        return 0;
+    }
+
+    fprintf(f, &quot;Hello File!&quot;);
+    fclose(f);
+
+    printf(&quot;File written successfully&quot;);
+
+    return 0;
+}`)">Try Yourself »</button>
+  </div>
+
+</div>
+
+
+<!-- EDITOR -->
+<div id="editorModal">
+  <div class="editorContainer">
+    <div class="editorTop">
+      <span>Try It Yourself Editor</span>
+      <div>
+        <button onclick="runCode()">Run ▶</button>
+        <button onclick="closeEditor()">Close ✖</button>
+      </div>
+    </div>
+
+    <div class="editorBody">
+      <textarea id="codeArea"></textarea>
+      <iframe id="output"></iframe>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function openEditor(code){
+    document.getElementById("editorModal").style.display="block";
+    document.getElementById("codeArea").value=code;
+    runCode();
+  }
+
+  function runCode(){
+    var code = document.getElementById("codeArea").value;
+    var iframe = document.getElementById("output");
+
+    iframe.contentDocument.open();
+    iframe.contentDocument.write(`
+      <html>
+      <head>
+        <style>
+          body{font-family:Arial;padding:15px;}
+          pre{background:#f4f4f4;padding:15px;border-radius:8px;}
+        </style>
+      </head>
+      <body>
+        <h2>Output Preview</h2>
+        <p style="color:red;">
+          Note: Browser cannot compile C code directly.
+          This is only showing your code.
+        </p>
+        <pre>${escapeHtml(code)}</pre>
+      </body>
+      </html>
+    `);
+    iframe.contentDocument.close();
+  }
+
+  function closeEditor(){
+    document.getElementById("editorModal").style.display="none";
+  }
+
+  function escapeHtml(text){
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+</script>
+
+</body>
+</html>

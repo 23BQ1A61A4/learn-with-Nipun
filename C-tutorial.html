@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Learn With Nipun - C Programming Full Course</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f1f1f1;
+}
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    position:fixed;
+    background:#111;
+    color:white;
+    overflow-y:auto;
+}
+
+.sidebar h2{
+    text-align:center;
+    padding:15px;
+    background:#3B82F6;
+    margin:0;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:10px 15px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.sidebar a:hover{
+    background:#3B82F6;
+}
+
+.main{
+    margin-left:270px;
+    padding:30px;
+}
+
+.section{
+    background:white;
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:8px;
+}
+
+h1,h2{
+    color:#3B82F6;
+}
+
+pre{
+    background:#eee;
+    padding:15px;
+    overflow:auto;
+    border-radius:6px;
+}
+
+button{
+    background:#3B82F6;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    cursor:pointer;
+    margin-top:10px;
+    border-radius:6px;
+}
+
+button:hover{
+    background:#1E40AF;
+}
+
+#editorModal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+}
+
+.editorContainer{
+    background:white;
+    width:90%;
+    height:90%;
+    margin:30px auto;
+    display:flex;
+    flex-direction:column;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.editorTop{
+    background:#3B82F6;
+    color:white;
+    padding:10px;
+    text-align:center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.editorTop span{
+    font-weight:bold;
+}
+
+.editorBody{
+    flex:1;
+    display:flex;
+}
+
+textarea{
+    width:50%;
+    border:none;
+    padding:15px;
+    font-family:monospace;
+    font-size:14px;
+    outline:none;
+}
+
+.outputBox{
+    width:50%;
+    border:none;
+    padding:15px;
+    background:#0b1220;
+    color:#00ff88;
+    font-family:monospace;
+    font-size:14px;
+    overflow:auto;
+}
+
+small{
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<h2>C Tutorial</h2>
+
+<a href="#home">C HOME</a>
+<a href="#intro">C Intro</a>
+<a href="#getstarted">C Get Started</a>
+<a href="#syntax">C Syntax</a>
+<a href="#output">C Output</a>
+<a href="#comments">C Comments</a>
+<a href="#variables">C Variables</a>
+<a href="#datatypes">C Data Types</a>
+<a href="#operators">C Operators</a>
+<a href="#ifelse">C If...Else</a>
+<a href="#switch">C Switch</a>
+<a href="#while">C While Loop</a>
+<a href="#for">C For Loop</a>
+<a href="#arrays">C Arrays</a>
+<a href="#strings">C Strings</a>
+<a href="#userinput">C User Input</a>
+<a href="#pointers">C Pointers</a>
+<a href="#functions">C Functions</a>
+<a href="#recursion">C Recursion</a>
+<a href="#structures">C Structures</a>
+<a href="#files">C Files</a>
+
+</div>
+
+<div class="main">
+
+<!-- HOME -->
+<div class="section" id="home">
+<h1>C Programming - Full Course</h1>
+<p>
+C is one of the most powerful and widely used programming languages.  
+It is used for system programming, embedded systems, OS development, and even game engines.
+</p>
+<p>
+This tutorial is designed for beginners and will cover all important concepts with examples.
+</p>
+</div>
+
+<!-- INTRO -->
+<div class="section" id="intro">
+<h1>C Intro</h1>
+<p>
+C is a general-purpose programming language developed by Dennis Ritchie in 1972.
+It is known for its speed, efficiency, and low-level memory access.
+</p>
+
+<h2>Why learn C?</h2>
+<ul>
+<li>Base for C++, Java, Python concepts</li>
+<li>Used in Operating Systems</li>
+<li>Very fast execution</li>
+<li>Best for understanding memory and pointers</li>
+</ul>
+</div>
+
+<!-- GET STARTED -->
+<div class="section" id="getstarted">
+<h1>C Get Started</h1>
+<p>
+To run C programs, you need a compiler like GCC, Turbo C, or online compilers.
+</p>
+
+<h2>First C Program</h2>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello World!");
+    return 0;
+}
+</pre>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    printf("Hello World!");
+    return 0;
+}`, `Hello World!`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- SYNTAX -->
+<div class="section" id="syntax">
+<h1>C Syntax</h1>
+<p>
+A C program consists of:
+</p>
+<ul>
+<li>Header files (#include)</li>
+<li>main() function</li>
+<li>Statements ending with semicolon ;</li>
+</ul>
+
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    // code here
+    return 0;
+}
+</pre>
+</div>
+
+<!-- OUTPUT -->
+<div class="section" id="output">
+<h1>C Output</h1>
+<p>
+C uses <b>printf()</b> function to print output.
+</p>
+
+<pre>
+printf("Welcome to C");
+</pre>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    printf("Welcome to C");
+    return 0;
+}`, `Welcome to C`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- COMMENTS -->
+<div class="section" id="comments">
+<h1>C Comments</h1>
+<p>
+Comments are ignored by compiler. They are used to explain code.
+</p>
+
+<pre>
+// Single line comment
+
+/*
+Multi line comment
+*/
+</pre>
+</div>
+
+<!-- VARIABLES -->
+<div class="section" id="variables">
+<h1>C Variables</h1>
+<p>
+Variables are used to store values. Example:
+</p>
+
+<pre>
+int age = 20;
+float price = 99.5;
+char grade = 'A';
+</pre>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int age = 20;
+    printf("Age = %d", age);
+    return 0;
+}`, `Age = 20`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- DATA TYPES -->
+<div class="section" id="datatypes">
+<h1>C Data Types</h1>
+<p>
+Common data types:
+</p>
+
+<ul>
+<li><b>int</b> - integer</li>
+<li><b>float</b> - decimal</li>
+<li><b>double</b> - bigger decimal</li>
+<li><b>char</b> - single character</li>
+</ul>
+
+<pre>
+int a = 10;
+float b = 5.5;
+char c = 'X';
+</pre>
+</div>
+
+<!-- OPERATORS -->
+<div class="section" id="operators">
+<h1>C Operators</h1>
+<p>
+Operators are used to perform operations:
+</p>
+
+<ul>
+<li>Arithmetic: + - * / %</li>
+<li>Relational: == != &gt; &lt; &gt;= &lt;=</li>
+<li>Logical: && || !</li>
+</ul>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int a=10, b=5;
+    printf("Sum = %d", a+b);
+    return 0;
+}`, `Sum = 15`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- IF ELSE -->
+<div class="section" id="ifelse">
+<h1>C If...Else</h1>
+<p>
+If condition is true, code executes.
+</p>
+
+<pre>
+if(age &gt;= 18) {
+   printf("Eligible");
+} else {
+   printf("Not Eligible");
+}
+</pre>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int age = 17;
+
+    if(age >= 18)
+        printf("Eligible");
+    else
+        printf("Not Eligible");
+
+    return 0;
+}`, `Not Eligible`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- SWITCH -->
+<div class="section" id="switch">
+<h1>C Switch</h1>
+<p>
+Switch is used for multiple choices.
+</p>
+
+<pre>
+switch(day){
+ case 1: printf("Mon"); break;
+ case 2: printf("Tue"); break;
+ default: printf("Invalid");
+}
+</pre>
+</div>
+
+<!-- WHILE -->
+<div class="section" id="while">
+<h1>C While Loop</h1>
+<p>
+While loop repeats while condition is true.
+</p>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int i=1;
+    while(i<=5){
+        printf("%d\\n", i);
+        i++;
+    }
+    return 0;
+}`, `1
+2
+3
+4
+5`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- FOR -->
+<div class="section" id="for">
+<h1>C For Loop</h1>
+<p>
+For loop is best when you know number of iterations.
+</p>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    for(int i=1;i<=3;i++){
+        printf("Hello\\n");
+    }
+    return 0;
+}`, `Hello
+Hello
+Hello`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- ARRAYS -->
+<div class="section" id="arrays">
+<h1>C Arrays</h1>
+<p>
+Array stores multiple values in one variable.
+</p>
+
+<pre>
+int marks[3] = {10,20,30};
+</pre>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int marks[3] = {10,20,30};
+    printf("%d", marks[1]);
+    return 0;
+}`, `20`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- STRINGS -->
+<div class="section" id="strings">
+<h1>C Strings</h1>
+<p>
+Strings are character arrays.
+</p>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    char name[] = "Nipun";
+    printf("Hello %s", name);
+    return 0;
+}`, `Hello Nipun`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- USER INPUT -->
+<div class="section" id="userinput">
+<h1>C User Input</h1>
+<p>
+Use scanf() to take input.
+</p>
+
+<pre>
+int a;
+scanf("%d", &a);
+</pre>
+
+<p><small>Note: Browser cannot take real scanf input here. This is demo output.</small></p>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int a;
+    printf("Enter a number: ");
+    scanf("%d", &a);
+    printf("You entered: %d", a);
+    return 0;
+}`, `Enter a number: 5
+You entered: 5`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- POINTERS -->
+<div class="section" id="pointers">
+<h1>C Pointers</h1>
+<p>
+Pointers store memory address of a variable.
+</p>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int main() {
+    int x = 10;
+    int *p = &x;
+
+    printf("Value = %d\\n", x);
+    printf("Address = %p", p);
+
+    return 0;
+}`, `Value = 10
+Address = 0x7ffee3c...`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- FUNCTIONS -->
+<div class="section" id="functions">
+<h1>C Functions</h1>
+<p>
+Functions are reusable blocks of code.
+</p>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int add(int a, int b){
+    return a+b;
+}
+
+int main() {
+    printf("%d", add(5,3));
+    return 0;
+}`, `8`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- RECURSION -->
+<div class="section" id="recursion">
+<h1>C Recursion</h1>
+<p>
+Recursion means function calls itself.
+</p>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+int fact(int n){
+    if(n==1) return 1;
+    return n * fact(n-1);
+}
+
+int main() {
+    printf("%d", fact(5));
+    return 0;
+}`, `120`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- STRUCTURES -->
+<div class="section" id="structures">
+<h1>C Structures</h1>
+<p>
+Structure is a user-defined data type.
+</p>
+
+<button onclick="openEditor(`#include <stdio.h>
+
+struct Student{
+    int id;
+    char name[20];
+};
+
+int main() {
+    struct Student s1 = {101, "Nipun"};
+    printf("ID=%d Name=%s", s1.id, s1.name);
+    return 0;
+}`, `ID=101 Name=Nipun`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- FILES -->
+<div class="section" id="files">
+<h1>C Files</h1>
+<p>
+C supports file handling using:
+</p>
+<ul>
+<li>fopen()</li>
+<li>fprintf()</li>
+<li>fscanf()</li>
+<li>fclose()</li>
+</ul>
+
+<p><small>Note: Browser cannot create real C files. This is only explanation.</small></p>
+</div>
+
+</div>
+
+<!-- EDITOR MODAL -->
+<div id="editorModal">
+<div class="editorContainer">
+<div class="editorTop">
+<span>Try It Yourself - C Editor (Demo)</span>
+<div>
+<button onclick="runCode()">Run ▶</button>
+<button onclick="closeEditor()">Close</button>
+</div>
+</div>
+
+<div class="editorBody">
+<textarea id="codeArea"></textarea>
+<div class="outputBox" id="outputBox"></div>
+</div>
+
+</div>
+</div>
+
+<script>
+let expectedOutput = "";
+
+function openEditor(code, output){
+    document.getElementById("editorModal").style.display="block";
+    document.getElementById("codeArea").value=code;
+    expectedOutput = output || "Output not available";
+    runCode();
+}
+
+function runCode(){
+    document.getElementById("outputBox").innerText = expectedOutput;
+}
+
+function closeEditor(){
+    document.getElementById("editorModal").style.display="none";
+}
+</script>
+
+</body>
+</html>

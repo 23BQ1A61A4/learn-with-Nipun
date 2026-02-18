@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn With Nipun - Complete C Course</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f1f1f1;
+}
+
+.header{
+    background:#04AA6D;
+    color:white;
+    padding:15px;
+    text-align:center;
+    font-size:22px;
+}
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    position:fixed;
+    background:#111;
+    color:white;
+    overflow-y:auto;
+}
+
+.sidebar h2{
+    text-align:center;
+    padding:15px;
+    background:#04AA6D;
+    margin:0;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:8px 15px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.sidebar a:hover{
+    background:#04AA6D;
+}
+
+.main{
+    margin-left:270px;
+    padding:30px;
+}
+
+.section{
+    background:white;
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:8px;
+}
+
+h1{
+    color:#04AA6D;
+}
+
+pre{
+    background:#eee;
+    padding:15px;
+    overflow:auto;
+}
+
+button{
+    background:#04AA6D;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#037a4f;
+}
+
+/* COMPILER */
+
+#editorModal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+}
+
+.editorContainer{
+    background:white;
+    width:95%;
+    height:90%;
+    margin:30px auto;
+    display:flex;
+    flex-direction:column;
+}
+
+.editorTop{
+    background:#04AA6D;
+    color:white;
+    padding:10px;
+    text-align:center;
+}
+
+.editorBody{
+    flex:1;
+    display:flex;
+}
+
+textarea{
+    width:50%;
+    border:none;
+    padding:15px;
+    font-family:monospace;
+}
+
+.outputArea{
+    width:50%;
+    background:black;
+    color:#00ff00;
+    padding:15px;
+    font-family:monospace;
+    overflow:auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+Learn With Nipun - Complete C Programming
+</div>
+
+<div class="sidebar">
+<h2>C Tutorial</h2>
+<a href="#intro">C Intro</a>
+<a href="#syntax">C Syntax</a>
+<a href="#variables">C Variables</a>
+<a href="#datatypes">C Data Types</a>
+<a href="#operators">C Operators</a>
+<a href="#ifelse">C If Else</a>
+<a href="#switch">C Switch</a>
+<a href="#loops">C Loops</a>
+<a href="#arrays">C Arrays</a>
+<a href="#strings">C Strings</a>
+<a href="#input">C User Input</a>
+<a href="#pointers">C Pointers</a>
+<a href="#functions">C Functions</a>
+<a href="#recursion">C Recursion</a>
+<a href="#structures">C Structures</a>
+<a href="#files">C Files</a>
+<a href="#memory">C Memory</a>
+<a href="#macros">C Macros</a>
+<a href="#errors">C Errors</a>
+</div>
+
+<div class="main">
+
+<!-- INTRO -->
+<div class="section" id="intro">
+<h1>C Introduction</h1>
+<p>C is a powerful programming language developed by Dennis Ritchie. 
+It is used in operating systems, embedded systems and software development.
+It gives low-level memory control and high performance.
+C is structured and procedural language.
+It is the foundation for C++, Java and many modern languages.</p>
+
+<pre class="codeBlock">
+#include &lt;stdio.h&gt;
+int main(){
+    printf("Hello World");
+    return 0;
+}
+</pre>
+<button class="tryBtn">Try Yourself »</button>
+</div>
+
+<!-- VARIABLES -->
+<div class="section" id="variables">
+<h1>C Variables</h1>
+<p>Variables store data values. 
+In C, variables must be declared with a data type.
+Common types: int, float, char.
+They help store user input and calculation results.
+Each variable occupies memory space.</p>
+
+<pre class="codeBlock">
+#include &lt;stdio.h&gt;
+int main(){
+    int age = 25;
+    printf("%d", age);
+    return 0;
+}
+</pre>
+<button class="tryBtn">Try Yourself »</button>
+</div>
+
+<!-- LOOPS -->
+<div class="section" id="loops">
+<h1>C Loops</h1>
+<p>Loops execute code multiple times.
+C supports for, while, do-while loops.
+Used in arrays and repetitive tasks.
+Improves efficiency.
+Reduces duplication of code.</p>
+
+<pre class="codeBlock">
+#include &lt;stdio.h&gt;
+int main(){
+    for(int i=1;i&lt;=5;i++){
+        printf("%d ", i);
+    }
+    return 0;
+}
+</pre>
+<button class="tryBtn">Try Yourself »</button>
+</div>
+
+</div>
+
+<!-- COMPILER MODAL -->
+
+<div id="editorModal">
+<div class="editorContainer">
+<div class="editorTop">
+C Online Compiler
+<button onclick="runCode()">Run ▶</button>
+<button onclick="closeEditor()">Close</button>
+</div>
+
+<div class="editorBody">
+<textarea id="codeArea"></textarea>
+<div class="outputArea" id="output"></div>
+</div>
+</div>
+</div>
+
+<script>
+
+const modal = document.getElementById("editorModal");
+const codeArea = document.getElementById("codeArea");
+const output = document.getElementById("output");
+
+document.querySelectorAll(".tryBtn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+        const code = btn.previousElementSibling.innerText;
+        codeArea.value = code;
+        output.innerText="Click Run to execute";
+        modal.style.display="block";
+    });
+});
+
+async function runCode(){
+    output.innerText="Running...";
+
+    try{
+        const res = await fetch("https://emkc.org/api/v2/piston/execute",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({
+                language:"c",
+                version:"10.2.0",
+                files:[{content:codeArea.value}]
+            })
+        });
+
+        const data = await res.json();
+        output.innerText = data.run.output || data.run.stderr;
+
+    }catch(e){
+        output.innerText="Server Error or CORS issue. Use Live Server.";
+    }
+}
+
+function closeEditor(){
+    modal.style.display="none";
+}
+
+</script>
+
+</body>
+</html>

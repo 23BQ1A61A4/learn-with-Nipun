@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Learn With Nipun - HTML Full Course</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f1f1f1;
+}
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    position:fixed;
+    background:#111;
+    color:white;
+    overflow-y:auto;
+}
+
+.sidebar h2{
+    text-align:center;
+    padding:15px;
+    background:#04AA6D;
+    margin:0;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:10px 15px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.sidebar a:hover{
+    background:#04AA6D;
+}
+
+.main{
+    margin-left:270px;
+    padding:30px;
+}
+
+.section{
+    background:white;
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:8px;
+}
+
+h1,h2{
+    color:#04AA6D;
+}
+
+pre{
+    background:#eee;
+    padding:15px;
+    overflow:auto;
+}
+
+button{
+    background:#04AA6D;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#037a4f;
+}
+
+#editorModal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+}
+
+.editorContainer{
+    background:white;
+    width:90%;
+    height:90%;
+    margin:30px auto;
+    display:flex;
+    flex-direction:column;
+}
+
+.editorTop{
+    background:#04AA6D;
+    color:white;
+    padding:10px;
+    text-align:center;
+}
+
+.editorBody{
+    flex:1;
+    display:flex;
+}
+
+textarea{
+    width:50%;
+    border:none;
+    padding:15px;
+    font-family:monospace;
+}
+
+iframe{
+    width:50%;
+    border:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<h2>HTML Tutorial</h2>
+
+<a href="#intro">HTML Introduction</a>
+<a href="#elements">HTML Elements</a>
+<a href="#attributes">HTML Attributes</a>
+<a href="#headings">HTML Headings</a>
+<a href="#paragraphs">HTML Paragraphs</a>
+<a href="#styles">HTML Styles</a>
+<a href="#formatting">HTML Formatting</a>
+<a href="#links">HTML Links</a>
+<a href="#images">HTML Images</a>
+<a href="#tables">HTML Tables</a>
+<a href="#lists">HTML Lists</a>
+<a href="#div">HTML Div</a>
+<a href="#classes">HTML Classes</a>
+<a href="#id">HTML Id</a>
+<a href="#forms">HTML Forms</a>
+<a href="#input">HTML Input Types</a>
+<a href="#iframe">HTML Iframes</a>
+<a href="#javascript">HTML JavaScript</a>
+<a href="#semantic">HTML Semantics</a>
+<a href="#responsive">HTML Responsive</a>
+
+</div>
+
+<div class="main">
+
+<!-- INTRODUCTION -->
+
+<div class="section" id="intro">
+<h1>HTML Introduction</h1>
+
+<p>
+HTML stands for HyperText Markup Language. It is the standard language used to create web pages. 
+HTML describes the structure of a webpage using elements. It tells the browser how to display 
+content such as headings, paragraphs, images, links, tables, and forms.
+</p>
+
+<p>
+HTML is not a programming language. It is a markup language, which means it uses tags to define 
+elements within a document. Every webpage you see on the internet is built using HTML along 
+with CSS and JavaScript.
+</p>
+
+<h2>Example</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome&lt;/h1&gt;
+&lt;p&gt;This is my first webpage&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<button onclick="openEditor(`<h1>Welcome</h1>
+<p>This is my first webpage</p>
+<br>
+<hr>`)">
+Try Yourself »
+</button>
+</div>
+
+
+<!-- ELEMENTS -->
+
+<div class="section" id="elements">
+<h1>HTML Elements</h1>
+
+<p>
+An HTML element usually consists of a start tag, content, and an end tag. 
+For example, a paragraph element starts with &lt;p&gt; and ends with &lt;/p&gt;.
+</p>
+
+<p>
+Some elements do not have closing tags. These are called empty elements, 
+like &lt;br&gt; and &lt;hr&gt;.
+</p>
+
+<pre>
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+</pre>
+
+<button onclick="openEditor(`<p>This is a paragraph</p>
+<br>
+<hr>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- ATTRIBUTES -->
+
+<div class="section" id="attributes">
+<h1>HTML Attributes</h1>
+
+<p>
+Attributes provide additional information about HTML elements. 
+They are always included in the opening tag.
+</p>
+
+<p>
+For example, the href attribute in the anchor tag specifies the link destination.
+</p>
+
+<pre>
+&lt;a href="https://google.com"&gt;Visit Google&lt;/a&gt;
+</pre>
+
+<button onclick="openEditor(`<a href='https://google.com'>Visit Google</a>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- HEADINGS -->
+
+<div class="section" id="headings">
+<h1>HTML Headings</h1>
+
+<p>
+HTML provides six levels of headings from &lt;h1&gt; to &lt;h6&gt;. 
+&lt;h1&gt; is the most important heading and &lt;h6&gt; is the least important.
+</p>
+
+<pre>
+&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Sub Heading&lt;/h2&gt;
+</pre>
+
+<button onclick="openEditor(`<h1>Main Heading</h1>
+<h2>Sub Heading</h2>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- PARAGRAPHS -->
+
+<div class="section" id="paragraphs">
+<h1>HTML Paragraphs</h1>
+
+<p>
+The &lt;p&gt; tag defines a paragraph. Browsers automatically add space before and after paragraphs.
+</p>
+
+<pre>
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+</pre>
+
+<button onclick="openEditor(`<p>This is a paragraph.</p>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- STYLES -->
+
+<div class="section" id="styles">
+<h1>HTML Styles</h1>
+
+<p>
+The style attribute is used to add CSS styles directly to HTML elements. 
+You can change color, font size, background color and more.
+</p>
+
+<pre>
+&lt;p style="color:red;"&gt;Red Text&lt;/p&gt;
+</pre>
+
+<button onclick="openEditor(`<p style='color:red;'>Red Text</p>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- FORMATTING -->
+
+<div class="section" id="formatting">
+<h1>HTML Formatting</h1>
+
+<p>
+Formatting tags are used to make text bold, italic, highlighted, or important.
+</p>
+
+<pre>
+&lt;b&gt;Bold&lt;/b&gt;
+&lt;i&gt;Italic&lt;/i&gt;
+&lt;mark&gt;Highlight&lt;/mark&gt;
+</pre>
+
+<button onclick="openEditor(`<b>Bold</b><br>
+<i>Italic</i><br>
+<mark>Highlight</mark>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- LINKS -->
+
+<div class="section" id="links">
+<h1>HTML Links</h1>
+
+<p>
+Links are created using the &lt;a&gt; tag. The href attribute specifies the URL.
+</p>
+
+<pre>
+&lt;a href="https://example.com"&gt;Click Here&lt;/a&gt;
+</pre>
+
+<button onclick="openEditor(`<a href='https://example.com'>Click Here</a>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- IMAGES -->
+
+<div class="section" id="images">
+<h1>HTML Images</h1>
+
+<p>
+Images are inserted using the &lt;img&gt; tag. The src attribute specifies the image path.
+</p>
+
+<pre>
+&lt;img src="https://via.placeholder.com/150"&gt;
+</pre>
+
+<button onclick="openEditor(`<img src='https://via.placeholder.com/150'>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- TABLES -->
+
+<div class="section" id="tables">
+<h1>HTML Tables</h1>
+
+<p>
+Tables are used to display data in rows and columns using 
+&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, and &lt;td&gt; tags.
+</p>
+
+<pre>
+&lt;table border="1"&gt;
+&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;John&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+<button onclick="openEditor(`<table border='1'>
+<tr><th>Name</th><th>Age</th></tr>
+<tr><td>John</td><td>20</td></tr>
+</table>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- LISTS -->
+
+<div class="section" id="lists">
+<h1>HTML Lists</h1>
+
+<p>
+Lists can be ordered (&lt;ol&gt;) or unordered (&lt;ul&gt;).
+</p>
+
+<pre>
+&lt;ul&gt;
+&lt;li&gt;Apple&lt;/li&gt;
+&lt;li&gt;Banana&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<button onclick="openEditor(`<ul>
+<li>Apple</li>
+<li>Banana</li>
+</ul>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- FORMS -->
+
+<div class="section" id="forms">
+<h1>HTML Forms</h1>
+
+<p>
+Forms are used to collect user input. The &lt;form&gt; element wraps input fields.
+</p>
+
+<pre>
+&lt;form&gt;
+&lt;input type="text"&gt;
+&lt;/form&gt;
+</pre>
+
+<button onclick="openEditor(`<form>
+<input type='text' placeholder='Enter Name'>
+</form>`)">
+Try Yourself »
+</button>
+</div>
+
+<!-- JAVASCRIPT -->
+
+<div class="section" id="javascript">
+<h1>HTML JavaScript</h1>
+
+<p>
+JavaScript can be added inside HTML using the &lt;script&gt; tag. 
+It is used to make webpages interactive.
+</p>
+
+<pre>
+&lt;button onclick="alert('Hello')"&gt;Click&lt;/button&gt;
+</pre>
+
+<button onclick="openEditor(`<button onclick="alert('Hello')">Click</button>`)">
+Try Yourself »
+</button>
+</div>
+
+</div>
+
+<!-- EDITOR -->
+
+<div id="editorModal">
+<div class="editorContainer">
+<div class="editorTop">
+Try It Yourself Editor
+<button onclick="runCode()">Run ▶</button>
+<button onclick="closeEditor()">Close</button>
+</div>
+<div class="editorBody">
+<textarea id="codeArea"></textarea>
+<iframe id="output"></iframe>
+</div>
+</div>
+</div>
+
+<script>
+function openEditor(code){
+document.getElementById("editorModal").style.display="block";
+document.getElementById("codeArea").value=code;
+runCode();
+}
+
+function runCode(){
+var code=document.getElementById("codeArea").value;
+var iframe=document.getElementById("output");
+iframe.contentDocument.open();
+iframe.contentDocument.write(code);
+iframe.contentDocument.close();
+}
+
+function closeEditor(){
+document.getElementById("editorModal").style.display="none";
+}
+</script>
+
+</body>
+</html>

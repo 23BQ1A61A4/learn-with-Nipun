@@ -4,14 +4,28 @@
   <title>Student Login</title>
   <link rel="stylesheet" href="style.css">
 
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
+
 <body>
 
 <div class="form-box">
   <h2>Student Login</h2>
 
-  <button class="btn" onclick="googleLogin()">Sign in with Google</button>
+  <!-- Google Sign In Button -->
+  <div id="g_id_onload"
+       data-client_id="671575259673-udqre1ja093dm51psui5l0c6utlihr2e.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse">
+  </div>
+
+  <div class="g_id_signin"
+       data-type="standard"
+       data-size="large"
+       data-theme="outline"
+       data-text="sign_in_with"
+       data-shape="pill">
+  </div>
 
   <p>Not yet registered?
     <a href="student-signup.html">Sign up</a>
@@ -19,17 +33,11 @@
 </div>
 
 <script>
-  const supabaseUrl = "https://gnkxhxkfzoicuyqkmgbh.supabase.co";
-  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdua3hoeGtmem9pY3V5cWttZ2JoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg0Nzg5MDEsImV4cCI6MjA4NDA1NDkwMX0.vWRK0PGHU_zo8ABeMC2mwPylxk9CQvFuOxD5y4BkVBI";
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+  function handleCredentialResponse(response) {
+    console.log("Google Token:", response.credential);
 
-  async function googleLogin() {
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: "student-home.html"
-      }
-    });
+    // ✅ Login success → redirect to student home
+    window.location.href = "student-home.html";
   }
 </script>
 
