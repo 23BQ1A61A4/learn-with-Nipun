@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Assignments</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container2">
+
+    <div class="sidebar">
+        <h2>Teacher Portal</h2>
+        <a href="teacher-homepage.html">Home</a>
+        <a href="#">My Courses</a>
+        <a class="active">Assignments</a>
+    </div>
+
+    <div class="main">
+        <h2>📝 Manage Assignments</h2>
+
+        <input type="text" id="assignmentTitle" placeholder="Assignment Title">
+        <button onclick="createAssignment()">Create</button>
+
+        <h3>📥 Student Submissions</h3>
+        <div id="submissionsList"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

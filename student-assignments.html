@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Assignments</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="student-home.html">Home</a>
+        <a href="student-courses.html">Courses</a>
+        <a href="student-mycourses.html">MyCourses</a>
+        <a class="active">Assignments</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>📚 Assignments</h2>
+    <div id="assignmentsList"></div>
+
+    <h3>✍ Submit Assignment</h3>
+    <select id="assignmentSelect"></select>
+
+    <textarea id="submissionText" placeholder="Write your assignment here..."></textarea>
+
+    <button onclick="submitAssignment()">Submit</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
